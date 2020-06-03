@@ -1,0 +1,50 @@
+/* 引导页 */
+body {
+	--color-text: #0f070a;
+	--color-bg: #dedede;
+	--color-bg-2: gery;
+	--color-link: #317bd0;
+	--color-link-hover: #317bd0;
+	background: radial-gradient(ellipse at 100% 0, gery 0, var(--color-bg) 50%, var(--color-bg-2) 115%)
+}
+
+/* 加 */
+			.start {
+				right: 500px;
+				bottom: 264px;
+				position: relative;
+				opacity: 0;
+				-webkit-transform: translate(100px);
+				-moz-transform: translate(100px);
+				transform: translate(100px);
+				-webkit-animation: animations3 3s ease-out 3s forwards;
+				-moz-animation: animations3 3s ease-out 3s forwards;
+				animation: animations3 3s ease-out 3s forwards;
+				transition: 0.5s all;
+				
+			}
+			/* 加 */
+			.frame__demos:hover .start{
+				bottom: 270px;
+				opacity: 1;
+				transition: 0.5s all;
+			}
+/* 加 */
+			@-webkit-keyframes animations3{
+    0%{-webkit-transform:translate(160px);opacity:0;}
+    50%{-webkit-transform:translate(130px);opacity:0.5;}
+    70%{-webkit-transform:translate(125px);opacity:0.8;}
+    100%{-webkit-transform:translate(125px);opacity:1;}
+}
+@-moz-keyframes animations3{
+    0%{-moz-transform:translate(160px);opacity:0;}
+    50%{-moz-transform:translate(130px);opacity:0.5;}
+    70%{-moz-transform:translate(125px);opacity:0.8;}
+    100%{-moz-transform:translate(125px);opacity:1;}
+}
+@keyframes animations3{
+    0%{transform:translate(160px);opacity:0;}
+    50%{transform:translate(130px);opacity:0.5;}
+    70%{transform:translate(125px);opacity:0.8;}
+    100%{transform:translate(125px);opacity:1;}
+}

@@ -1,0 +1,64 @@
+
+    	/* 焦点图样式 */
+		.get {
+			position: relative;
+			padding: 100px 0;
+			
+		}
+
+		/* 禁用响应式*/
+		.am-container {
+			width: 980px !important;
+			max-width: none;
+		}
+
+		/* 页面大标题样式 */
+		.title {
+			height: 0;
+		}
+
+		.title-h2 {
+			width: 90%;
+			text-shadow: 40px -12px 2px darkgrey;
+			top: 90%;
+			font-size: 30px;
+			position: absolute;
+			left: 12%;
+		}
+
+		.excellent_text {
+			margin: 15px 0;
+		}
+
+		/* 简介内容title样式 */
+		.words {
+			font-size: 25px;
+
+		}
+
+		.text {
+			font-size: 19px;
+			line-height: 30px;
+			letter-spacing: 1px;
+			text-transform: capitalize;
+			text-indent: 35px;
+			font-weight: 500;
+			font-family: "imprint mt shadow"
+		}
+
+		/* about me标题字样 */
+		.title1 {
+			font-size: 25px;
+			text-align: center;
+		}
+
+		.word1 {
+			text-align: center;
+		}
+
+
+
+		/* 内容样式 */
+		.content{
+			width: 102%;
+		}

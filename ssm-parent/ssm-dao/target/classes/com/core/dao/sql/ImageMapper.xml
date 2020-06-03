@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core.dao.ImageMapper">
+  <resultMap id="BaseResultMap" type="com.core.entity.Image">
+    <id column="image_id" jdbcType="INTEGER" property="imageId" />
+    <result column="image_title" jdbcType="VARCHAR" property="imageTitle" />
+    <result column="image_content" jdbcType="VARCHAR" property="imageContent"/>
+    <result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
+    <result column="image_create_time" jdbcType="TIMESTAMP" property="imageCreateTime" />
+    <result column="image_modify_time" jdbcType="TIMESTAMP" property="imageModifyTime" />
+    <result column="image_tags" jdbcType="VARCHAR" property="imageTags" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    image_id, image_title, image_content, image_url, image_create_time, image_modify_time, image_tags, 
+    status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from image
+    where image_id = #{imageId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from image
+    where image_id = #{imageId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.core.entity.Image">
+    insert into image (image_id, image_title, image_content, image_url, 
+      image_create_time, image_modify_time, image_tags,
+      status)
+    values (#{imageId,jdbcType=INTEGER}, #{imageTitle,jdbcType=VARCHAR}, #{imageContent,jdbcType=VARCHAR}, #{imageUrl,jdbcType=VARCHAR}, 
+      #{imageCreateTime,jdbcType=TIMESTAMP}, #{imageModifyTime,jdbcType=TIMESTAMP}, #{imageTags,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.core.entity.Image">
+    insert into image
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="imageId != null">
+        image_id,
+      </if>
+      <if test="imageTitle != null">
+        image_title,
+      </if>
+      <if test="imageContent != null">
+        image_content,
+      </if>
+      <if test="imageUrl != null">
+        image_url,
+      </if>
+      <if test="imageCreateTime != null">
+        image_create_time,
+      </if>
+      <if test="imageModifyTime != null">
+        image_modify_time,
+      </if>
+      <if test="imageTags != null">
+        image_tags,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="imageId != null">
+        #{imageId,jdbcType=INTEGER},
+      </if>
+      <if test="imageTitle != null">
+        #{imageTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="imageContent != null">
+        #{imageContent,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null">
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imageCreateTime != null">
+        #{imageCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="imageModifyTime != null">
+        #{imageModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="imageTags != null">
+        #{imageTags,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.core.entity.Image">
+    update image
+    <set>
+      <if test="imageTitle != null">
+        image_title = #{imageTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="imageContent != null">
+        image_content = #{imageContent,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null">
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="imageCreateTime != null">
+        image_create_time = #{imageCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="imageModifyTime != null">
+        image_modify_time = #{imageModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="imageTags != null">
+        image_tags = #{imageTags,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where image_id = #{imageId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.core.entity.Image">
+    update image
+    set image_title = #{imageTitle,jdbcType=VARCHAR},
+      image_content = #{image_content,jdbcType=VARCHAR},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      image_create_time = #{imageCreateTime,jdbcType=TIMESTAMP},
+      image_modify_time = #{imageModifyTime,jdbcType=TIMESTAMP},
+      image_tags = #{imageTags,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where image_id = #{imageId,jdbcType=INTEGER}
+  </update>
+  <select id="getImageList" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from image
+    <where>
+		<if test="image_title != null and image_title != ''">
+			and instr(image_title,#{image_title,jdbcType=VARCHAR})
+		</if>
+		<if test="image_content !=null and image_content != ''">
+			and instr(image_content,#{image_content,jdbcType=VARCHAR})
+		</if>
+		<if test="image_url !=null and image_url != ''">
+			and instr(image_url,#{image_url,jdbcType=VARCHAR})
+		</if>
+		<if test="image_tags !=null and image_tags != ''">
+			and instr(image_tags,#{image_tags,jdbcType=VARCHAR})
+		</if>
+		<if test="status !=null and status != ''">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+	</where>
+   	limit #{pages,jdbcType=INTEGER},#{limit,jdbcType=INTEGER};
+  </select>
+  <select id="selectCounts" resultType="int" parameterType="map">
+		select
+			count(*)
+		from
+			image
+	  <where>
+		 <if test="image_title != null and image_title != ''">
+			and instr(image_title,#{image_title,jdbcType=VARCHAR})
+		</if>
+		<if test="image_content != null and image_content != ''">
+			and instr(image_content,#{image_content,jdbcType=VARCHAR})
+		</if>
+		<if test="image_url != null and image_url != ''">
+			and instr(image_url,#{image_url,jdbcType=VARCHAR})
+		</if>
+		<if test="image_tags != null and image_tags != ''">
+			and instr(image_tags,#{image_tags,jdbcType=VARCHAR})
+		</if>
+		<if test="status !=null and status != ''">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+	</where>
+	</select>
+	<update id="updateByStatus" parameterType="com.core.entity.Image" >
+	    update image
+	    <set>
+	    	<if test="status !=null and status !=''">
+				status = #{status,jdbcType=INTEGER}
+			</if>
+	    </set>  
+	    where image_id = #{imageId,jdbcType=INTEGER}
+  	</update>
+</mapper>

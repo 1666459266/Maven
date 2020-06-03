@@ -1,0 +1,75 @@
+* {
+            margin: 0px;
+            padding: 0px;
+}
+ 
+html, body {
+            height: 100%;
+}
+body {
+	background-image: url("https://gitee.com/KingCrimson/xiang/raw/master/images/bj.png");
+	background-repeat: no-repeat;
+	background-size: 102%;
+	text-align: center;
+}
+
+.content {
+	height: 120px;
+	overflow: hidden;
+	width: 102%;
+}
+
+.content img {
+	width: 100%;
+}
+
+.footer {
+            width: 102%;
+            z-index: 9999;
+			margin-top: -50px;
+        }
+
+.footer p {
+	color: #7f8c8d;
+	margin: 0;
+	padding: 15px 0;
+	text-align: center;
+	background: #2d3e50;
+}
+
+.main {
+	margin-top: 80px;
+	padding-bottom: 15px;
+}
+
+.tp {
+	margin: 20px auto;
+	width: 980px;
+	height: 300px;
+	border: 6px solid white;
+	background-color: #FFFFFF;
+	text-align: center;
+}
+
+video {
+	height: 450px;
+}
+
+.videobox {
+	margin: 0 auto;
+
+}
+
+.videotitle {
+	font: italic bold 50px "Times New Roman";
+}
+
+.videotext {
+	font: 1.5px;
+}
+.videowarp{
+	min-height: 100%;
+}
+
+
+

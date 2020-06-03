@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core.dao.VideoMapper">
+  <resultMap id="BaseResultMap" type="com.core.entity.Video">
+    <id column="video_id" jdbcType="INTEGER" property="videoId" />
+    <result column="video_title" jdbcType="VARCHAR" property="videoTitle" />
+    <result column="video_content" jdbcType="VARCHAR" property="videoContent"/>
+    <result column="video_url" jdbcType="VARCHAR" property="videoUrl" />
+    <result column="video_create_time" jdbcType="TIMESTAMP" property="videoCreateTime" />
+    <result column="video_modify_time" jdbcType="TIMESTAMP" property="videoModifyTime" />
+    <result column="video_tags" jdbcType="VARCHAR" property="videoTags" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    video_id, video_title, video_content, video_url, video_create_time, video_modify_time, video_tags, 
+    status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from video
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from video
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.core.entity.Video">
+    insert into video (video_id, video_title, video_content, video_url, 
+      video_create_time, video_modify_time, video_tags,
+      status)
+    values (#{videoId,jdbcType=INTEGER}, #{videoTitle,jdbcType=VARCHAR}, #{videoContent,jdbcType=VARCHAR}, #{videoUrl,jdbcType=VARCHAR}, 
+      #{videoCreateTime,jdbcType=TIMESTAMP}, #{videoModifyTime,jdbcType=TIMESTAMP}, #{videoTags,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER})
+  </insert>
+   <insert id="insertSelective" parameterType="com.core.entity.Video">
+    insert into video
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="videoId != null">
+        video_id,
+      </if>
+      <if test="videoTitle != null">
+        video_title,
+      </if>
+      <if test="videoContent != null">
+        video_content,
+      </if>
+      <if test="videoUrl != null">
+        video_url,
+      </if>
+      <if test="videoCreateTime != null">
+        video_create_time,
+      </if>
+      <if test="videoModifyTime != null">
+        video_modify_time,
+      </if>
+      <if test="videoTags != null">
+        video_tags,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="videoId != null">
+        #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="videoTitle != null">
+        #{videoTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="videoContent != null">
+        #{videoContent,jdbcType=VARCHAR},
+      </if>
+      <if test="videoUrl != null">
+        #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCreateTime != null">
+        #{videoCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="videoModifyTime != null">
+        #{videoModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="videoTags != null">
+        #{videoTags,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.core.entity.Video">
+    update video
+    <set>
+      <if test="videoTitle != null">
+        video_title = #{videoTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="videoContent != null">
+        video_content = #{videoContent,jdbcType=VARCHAR},
+      </if>
+      <if test="videoUrl != null">
+        video_url = #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCreateTime != null">
+        video_create_time = #{videoCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="videoModifyTime != null">
+        video_modify_time = #{videoModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="videoTags != null">
+        video_tags = #{videoTags,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.core.entity.Video">
+    update video
+    set video_title = #{videoTitle,jdbcType=VARCHAR},
+      video_content = #{video_content,jdbcType=VARCHAR},
+      video_url = #{videoUrl,jdbcType=VARCHAR},
+      video_create_time = #{videoCreateTime,jdbcType=TIMESTAMP},
+      video_modify_time = #{videoModifyTime,jdbcType=TIMESTAMP},
+      video_tags = #{videoTags,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </update>
+  <select id="getVideoList" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <include refid="Base_Column_List" />
+    from video
+    <where>
+		<if test="video_title != null and video_title != ''">
+			and instr(video_title,#{video_title,jdbcType=VARCHAR})
+		</if>
+		<if test="video_content !=null and video_content != ''">
+			and instr(video_content,#{video_content,jdbcType=VARCHAR})
+		</if>
+		<if test="video_url !=null and video_url != ''">
+			and instr(video_url,#{video_url,jdbcType=VARCHAR})
+		</if>
+		<if test="video_tags !=null and video_tags != ''">
+			and instr(video_tags,#{video_tags,jdbcType=VARCHAR})
+		</if>
+		<if test="status !=null and status != ''">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+	</where>
+    limit #{pages,jdbcType=INTEGER},#{limit,jdbcType=INTEGER};
+  </select>
+  <select id="selectCounts" resultType="int" parameterType="map">
+		select
+			count(*)
+		from
+			video
+	  <where>
+		 <if test="video_title != null and video_title != ''">
+			and instr(video_title,#{video_title,jdbcType=VARCHAR})
+		</if>
+		<if test="video_content != null and video_content != ''">
+			and instr(video_content,#{video_content,jdbcType=VARCHAR})
+		</if>
+		<if test="video_url != null and video_url != ''">
+			and instr(video_url,#{video_url,jdbcType=VARCHAR})
+		</if>
+		<if test="video_tags != null and video_tags != ''">
+			and instr(video_tags,#{video_tags,jdbcType=VARCHAR})
+		</if>
+		<if test="status !=null and status != ''">
+			and status = #{status,jdbcType=INTEGER}
+		</if>
+	</where>
+	</select>
+	<update id="updateByStatus" parameterType="com.core.entity.Video" >
+	    update video
+	    <set>
+	    	<if test="status !=null and status !=''">
+				status = #{status,jdbcType=INTEGER}
+			</if>
+	    </set>  
+	    where video_id = #{videoId,jdbcType=INTEGER}
+  	</update>
+</mapper>

@@ -1,0 +1,144 @@
+/* 鐒︾偣鍥炬牱寮� */
+.get {
+	position: relative;
+	padding: 100px 0;
+}
+
+/* 绂佺敤鍝嶅簲寮�*/
+.am-container {
+	width: 980px !important;
+	max-width: none;
+}
+
+.get, .footer {
+	min-width: 980px;
+}
+
+/* 椤甸潰澶ф爣棰樻牱寮� */
+.title {
+	height: 0;
+}
+
+.title-h2 {
+	width: 80%;
+	text-shadow: 40px -12px 2px darkgrey;
+	top: 92%;
+	font-size: 30px;
+	position: absolute;
+	left: 4%;
+}
+
+/* 绠�浠嬪唴瀹箃itle鏍峰紡 */
+.word {
+	font-size: 20px;
+	margin: 2% 0;
+}
+
+.text {
+	font-size: 17px;
+	line-height: 30px;
+	text-transform: capitalize;
+	text-indent: 35px;
+	font-weight: 500;
+	font-family: "imprint mt shadow";
+	word-break: break-all;
+}
+
+/* about me鏍囬瀛楁牱 */
+.title1 {
+	font-size: 20px;
+	text-align: center;
+	margin: 2% 0;
+	font-family: 'Times New Roman';
+}
+
+.word1 {
+	text-align: center;
+	font-size: 20px;
+	margin: 5% 0;
+}
+
+.text1 {
+	font-size: 17px;
+	line-height: 30px;
+	text-transform: capitalize;
+	text-indent: 35px;
+	font-weight: 500;
+	font-family: "imprint mt shadow";
+	word-break: break-all;
+	margin: 5% 5% 5% 5%;
+}
+
+/* 鍐呭鏍峰紡 */
+.bigbox {
+	margin: 10px 10px 30px 10px;
+	padding: 20px 20px;
+}
+
+.excellent-content1 {
+	float: right;
+	top: 2%;
+	left: 688px;
+	position: absolute;
+}
+
+.excellent-content2 {
+	float: right;
+	position: absolute; 
+	top: 52%;
+	left: 688px;
+}
+
+.excellent-picture {
+	margin: 10px 10px;
+}
+
+.text {
+	font-size: 17px;
+	line-height: 30px;
+	text-transform: capitalize;
+	text-indent: 35px;
+	font-weight: 500;
+	font-family: "imprint mt shadow";
+	word-break: break-all;
+	margin: 5% 5% 5% 5%;
+}
+
+.subtitle {
+	text-align: center;
+	font-size: 20px;
+	margin: 5% 0;
+}
+
+.bigbox .excellent-picture .pic {
+	box-shadow: 20px 20px 20px darkgray;
+	margin: 25px 36px;
+	width: 600px;
+	height: 400px;
+}
+
+.col-sm-0.col-lg-5.aboutme {
+	padding: 10px 150px;
+}
+
+.aboutme-content {
+	box-shadow: 20px 20px 20px darkgrey;
+	border: 2px solid grey;
+	border-radius: 10px;
+}
+
+.avatar-picture {
+	width: 280px;
+	height: 360px;
+	margin: 0 auto;
+}
+/* youxiutu */
+.pic .a {
+	width: 100%;
+	height: 100%;
+}
+
+.avatar-picture b {
+	width: 100%;
+	height: 100%;
+}
